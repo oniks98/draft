@@ -2177,14 +2177,113 @@
 //   if (event.target.nodeName !== 'IMG') {
 //     return;
 //   }
-//   imageClick(event.target);
+//   openModal(event.target.dataset.source);
 // }
 
-// function imageClick(image) {
-//   const instance = basicLightbox.create(`
-//     <img src="${image.dataset.source}">
-// `);
+// document.addEventListener('keydown', galleryKeydown);
+
+// function galleryKeydown(event) {
+//   const isOpenModal = document.querySelector('.basicLightbox'); // перевірка, чи модальне вікно відкрите
+//   if (['Enter', 'NumpadEnter', 'Space'].includes(event.code) && !isOpenModal) {
+//     const img = event.target.querySelector('img');
+//     if (img) {
+//       openModal(img.dataset.source);
+//     }
+//   }
+// }
+
+// function openModal(image) {
+//   const instance = basicLightbox.create(
+//     `
+//     <img src="${image}">
+// `,
+//     {
+//       onShow: () => document.addEventListener('keydown', closeModal),
+//       onClose: () => document.removeEventListener('keydown', closeModal),
+//     }
+//   );
 
 //   instance.show();
+
+//   function closeModal(event) {
+//     if (event.code === 'Escape') {
+//       instance.close();
+//     }
+//   }
 // }
 //////////////////////////////////////////////////////
+// const btn = document.querySelector('#hider');
+// const box = document.querySelector('#text');
+
+// btn.addEventListener('click', handleClick);
+
+// function handleClick(event) {
+//   box.hidden = true;
+// }
+/////////////////////////////////////////
+// const boxes = document.querySelector('#container');
+// const btn = document.querySelectorAll('.remove-button');
+// const box = document.querySelectorAll('.pane');
+
+// boxes.addEventListener('click', handleClick);
+
+// function handleClick(event) {
+//   // if (!event.target.classList.contains('remove-button')) return;
+
+//   // if (event.target.className != 'remove-button') return;
+
+//   if (event.target.nodeName !== 'BUTTON') return;
+
+//   removeBox(event.target);
+// }
+
+// function removeBox(button) {
+//   //   const indexBtn = [...btn].indexOf(button);
+//   //   [...box][indexBtn].hidden = true;
+
+//   //   button.closest('.pane').hidden = true;
+
+//   const pane = button.closest('.pane');
+//   pane.remove();
+// }
+/////////////////////////////////////
+// Обертаємо кожен текстовий вузол у <span>
+// for (const li of tree.querySelectorAll('li')) {
+//   const span = document.createElement('span'); // створюємо <span>
+//   li.prepend(span); // додаємо його перед усім вмістом <li>
+//   span.append(span.nextSibling); // поміщаємо текстовий вузол у span
+// }
+// const listAnimal = document.querySelector('.tree');
+
+// listAnimal.addEventListener('click', handleClick);
+
+// function handleClick(event) {
+//   if (event.target.nodeName !== 'SPAN') return;
+//   console.log(event.target);
+
+//   hiddenMenu(event.target);
+// }
+
+// function hiddenMenu(itemMenu) {
+//   const childUl = itemMenu.closest('li').querySelector('ul');
+//   if (!childUl) return; // дітей немає , виходимо
+//   childUl.hidden = !childUl.hidden; // Перемикаємо видимість
+//   childUl.classList.toggle('hidden');
+//   CSS для приховування підменю:
+//   .hidden {
+//   display: none;
+// }
+// або
+// if (childUl.style.display === 'none') {
+//   childUl.style.display = ''; // Показати елемент
+// } else {
+//   childUl.style.display = 'none'; // Приховати елемент
+// }
+// }
+
+// Приховуємо всі підсписки за замовчуванням
+// let sublists = document.querySelectorAll('.tree ul ul');
+// sublists.forEach(function (ul) {
+//   ul.hidden = true;
+// });
+///////////////////////////////////////////////////////////////////////////
