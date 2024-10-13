@@ -2186,6 +2186,7 @@
 //   const isOpenModal = document.querySelector('.basicLightbox'); // перевірка, чи модальне вікно відкрите
 //   if (['Enter', 'NumpadEnter', 'Space'].includes(event.code) && !isOpenModal) {
 //     const img = event.target.querySelector('img');
+
 //     if (img) {
 //       openModal(img.dataset.source);
 //     }
@@ -2287,3 +2288,232 @@
 //   ul.hidden = true;
 // });
 ///////////////////////////////////////////////////////////////////////////
+// let salaries = {
+//   Іван: 100,
+//   Петро: 300,
+//   Марія: 250,
+// };
+
+// function topSalary(salaries) {
+//   let maxSalary = 0;
+//   let maxName = null;
+
+//   for (let [name, salary] of Object.entries(salaries)) {
+//     if (salary > maxSalary) {
+//       maxSalary = salary;
+//       maxName = name;
+//     }
+//   }
+//   return maxName;
+// }
+
+// console.log(topSalary(salaries));
+///////////////////////////////////////////////////////////////
+// const person = {
+//   name: 'Олег',
+//   address: {
+//     city: 'Київ',
+//     street: 'Хрещатик',
+//   },
+// };
+
+// const {
+//   address: { city },
+// } = person;
+
+// console.log(city);
+// ////////////////////////////////////////////////////
+// const fruits = ['apple', 'banana', 'orange', 'kiwi'];
+
+// const [a, ...rest] = fruits;
+// console.log(a, rest);
+// /////////////////////////////////////////////////////////
+// const user = { name: 'Оля', age: 25 };
+
+// const { name: userName, age: userAge } = user;
+// console.log(userName, userAge);
+/////////////////////////////////////////////////
+// function getScores() {
+//   return [85, 90, 78];
+// }
+// const [a, b] = getScores();
+// console.log(a, b);
+///////////////////////////////////////////////////
+// const product = { name: 'Телефон', price: 300 };
+
+// function showProduct({ name, price }) {
+//   console.log(`Продукт: ${name}, Ціна: ${price}`);
+// }
+
+// showProduct(product);
+///////////////////////////////////////////////////
+// const data = {
+//   title: 'Book',
+//   info: {
+//     author: 'John Doe',
+//     genres: ['fiction', 'mystery'],
+//   },
+// };
+
+// const {
+//   title,
+//   info: {
+//     author,
+//     genres: [a],
+//   },
+// } = data;
+
+// console.log(title, author, a);
+//////////////////////////////////////////////////////////
+// const library = {
+//   books: [
+//     {
+//       title: 'Harry Potter',
+//       author: {
+//         firstName: 'J.K.',
+//         lastName: 'Rowling',
+//       },
+//       genres: ['fantasy', 'adventure'],
+//       publicationYear: 1997,
+//     },
+//     {
+//       title: 'Lord of the Rings',
+//       author: {
+//         firstName: 'J.R.R.',
+//         lastName: 'Tolkien',
+//       },
+//       genres: ['fantasy', 'epic'],
+//       publicationYear: 1954,
+//     },
+//   ],
+// };
+// const { books } = library;
+// console.log(books);
+
+// for (const book of books) {
+//   const {
+//     author: { firstName, lastName },
+//     genres: [a],
+//   } = book;
+//   console.log(firstName, lastName, a);
+// }
+///////////////////////////////////////////////////////////////
+// function getUsers() {
+//   return [
+//     { name: 'Alice', age: 30 },
+//     { name: 'Bob', age: 25 },
+//     { name: 'Charlie', age: 35 },
+//   ];
+// }
+
+// const [, { name, age }] = getUsers();
+// console.log(`Ім'я:${name}, Вік:${age}`);
+// ////////////////////////////////////////////////////////////
+// const person = {
+//   name: 'Mark',
+//   contact: {
+//     phone: '123-456-789',
+//     email: 'mark@example.com',
+//   },
+// };
+
+// function showContactInfo({ contact: { phone, email } }) {
+//   return `Тел: ${phone}, Пошта: ${email}`;
+// }
+// console.log(showContactInfo(person));
+///////////////////////////////////////////////////////////////
+// const settings = {
+//   theme: 'dark',
+//   language: 'en',
+// };
+
+// function applySettings({ theme = 'light', language = 'en', layout = 'grid' }) {
+//   return `Тема: ${theme}, Мова: ${language}, Макет: ${layout}`;
+// }
+
+// console.log(applySettings(settings));
+///////////////////////////////////////////////////////////////
+// const products = [
+//   { name: 'Laptop', price: 1000, details: { color: 'gray', weight: 2 } },
+//   { name: 'Phone', price: 600, details: { color: 'black', weight: 0.5 } },
+//   { name: 'Tablet', price: 800, details: { color: 'white', weight: 1 } },
+// ];
+// for (const product of products) {
+//   const {
+//     name,
+//     price,
+//     details: { color, weight },
+//   } = product;
+//   console.log(
+//     `Ім'я: ${name}, Ціна: ${price}, Колір: ${color}, Маса: ${weight} кг`
+//   );
+// }
+///////////////////////////////////////////////////////////////////
+// function getScores() {
+//   return [100, 95, 90, 85, 80];
+// }
+
+// const [a, b, ...rest] = getScores();
+// console.log(a);
+// console.log(b);
+// console.log(rest);
+///////////////////////////////////////////////////////////
+// function configureUser({
+//   name = 'Unknown',
+//   preferences: {
+//     theme = 'light',
+//     notifications = { email: true, sms: false },
+//   } = {},
+// }) {
+//   return `Ім'я: ${name}, Тема: ${theme}, Пошта: ${true}, СМС: ${false} `;
+// }
+
+// const user = {
+//   name: 'Alice',
+//   preferences: {
+//     theme: 'dark',
+//   },
+// };
+
+// console.log(configureUser(user));
+//////////////////////////////////////////////////////////////
+// const teams = [
+//   { name: 'Team A', members: ['Alice', 'Bob'] },
+//   { name: 'Team B', members: ['Charlie', 'Dave'] },
+// ];
+
+// for (const team of teams) {
+//   const {
+//     name,
+//     members: [nameFirst, nameSecond],
+//   } = team;
+
+//   console.log(`Ім'я: ${name}, Член 1: ${nameFirst}, Член 2: ${nameSecond} `);
+// }
+////////////////////////////////////////////////////////////////
+// const user = {
+//   name: 'Kate',
+//   age: 28,
+//   email: 'kate@example.com',
+//   password: 'secret',
+// };
+
+// const { password, ...rest } = user;
+// console.log(rest);
+/////////////////////////////////////////////////////////////
+
+// function getSettings() {
+//   return {
+//     theme: 'dark',
+//     getColors() {
+//       return ['#ffffff', '#000000'];
+//     },
+//   };
+// }
+
+// const { theme, getColors } = getSettings();
+
+// const [colorFirst, colorSecond] = getColors();
+
+// console.log(`Тема: ${theme}, Колор 1: ${colorFirst}, Колор 2: ${colorSecond} `);
+///////////////////////////////////////////////////////////////
