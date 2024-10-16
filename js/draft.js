@@ -2517,3 +2517,116 @@
 
 // console.log(`Тема: ${theme}, Колор 1: ${colorFirst}, Колор 2: ${colorSecond} `);
 ///////////////////////////////////////////////////////////////
+
+// 4 практика
+//  8. При натисканні на будь-який рядок у табличці відобразіть
+//  повідомлення з назвою продукту та його ціною.
+//  "Ви вибрали <product> за <price>".
+//
+// const table = document.querySelector('tbody');
+// const details = document.querySelector('#productDetails');
+
+// table.addEventListener('click', showProduct);
+
+// function showProduct(event) {
+//   if (details.textContent !== '') details.textContent = '';
+//   if (event.target.textContent.includes('грн')) {
+//     const price = event.target.textContent;
+//     const product = event.target.previousElementSibling.textContent;
+//     details.append(`Ви вибрали ${product} за ${price}`);
+//   } else {
+//     const product = event.target.textContent;
+//     const price = event.target.nextElementSibling.textContent;
+//     details.append(`Ви вибрали ${product} за ${price}`);
+//   }
+// }
+// 2 варіант
+// const table = document.querySelector('tbody');
+// const details = document.querySelector('#productDetails');
+
+// table.addEventListener('click', showProduct);
+
+// function showProduct(event) {
+//   const row = event.target.closest('tr'); // Знайти найближчий рядок таблиці
+//   if (row) {
+//     const product = row.cells[0].textContent; // Отримати перший стовпець (назва продукту)
+//     const price = row.cells[1].textContent; // Отримати другий стовпець (ціна)
+//     details.textContent = `Ви вибрали ${product} за ${price}`; // Вивести повідомлення
+//   }
+// }
+// 9. При натисканні на кожну з кнопок підсумовуються значення з data-атрибутів.
+// За натисканням на кнопку "Вивести результат" виводиться сума значення, а також статистика з
+// інформацією про те, яка кнопка була натиснута скільки разів.
+
+const list = document.querySelector('.statList');
+const btn = document.querySelector('#resultButton');
+const resultSection = document.querySelector('#resultSection');
+
+const summaText = document.createElement('p');
+const resultBtnList = document.createElement('ul');
+
+let summaArr = [];
+let summa = 0;
+let btnArr = [];
+
+let clickCount1 = 0;
+let clickCount2 = 0;
+let clickCount3 = 0;
+let clickCount4 = 0;
+let clickCount5 = 0;
+let clickCount6 = 0;
+
+list.addEventListener('click', calcSumma);
+
+function calcSumma(event) {
+  resultBtnList.innerHTML = '';
+  summaText.innerHTML = '';
+
+  summaArr.push(Number(event.target.dataset.number));
+  summa = summaArr.reduce((previousValue, number) => {
+    return previousValue + number;
+  }, 0);
+
+  // if (!btnArr.includes(event.target.textContent))
+  //   btnArr.push(event.target.textContent);
+
+  if (event.target.textContent === 'Button #1') {
+    clickCount1++;
+    const obj = { key: event.target.textContent, value: clickCount1 };
+    btnArr.push(obj);
+  }
+  if (event.target.textContent === 'Button #2') clickCount2++;
+  if (event.target.textContent === 'Button #3') clickCount3++;
+  if (event.target.textContent === 'Button #4') clickCount4++;
+  if (event.target.textContent === 'Button #5') clickCount5++;
+  if (event.target.textContent === 'Button #6') clickCount6++;
+
+  console.log(clickCount1);
+  console.log(btnArr);
+}
+
+btn.addEventListener('click', showResult);
+
+function showResult(event) {
+  summaText.textContent = `Сума: ${summa}`;
+
+  const listBtn = btnArr
+    .map(
+      ({ key, value }) =>
+        `<li>
+           Кнопка ${key} натиснута ${value}
+         </li>`
+    )
+    .join('');
+
+  resultBtnList.insertAdjacentHTML('beforeend', listBtn);
+
+  resultSection.append(summaText);
+  resultSection.append(resultBtnList);
+
+  summaArr = [];
+  summa = 0;
+  btnArr = [];
+
+  console.log(resultSection);
+}
